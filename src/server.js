@@ -16,6 +16,10 @@ export const startServer = () => {
   app.use(express.json());
   app.use(cookieParser());
 
+  app.get("/", (req, res) => {
+    res.send("Welcome to the API. Use Postman to interact with the endpoints.");
+  });
+
   app.use("/contacts", contactsRouter);
   app.use("/auth", authRouter);
 
