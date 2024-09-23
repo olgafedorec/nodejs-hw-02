@@ -1,6 +1,7 @@
 import { Schema, model } from 'mongoose';
 import { contactTypes, phoneNumberRegexp } from '../../constants/contacts.js';
 import { handleSaveError, setUpdateOptions } from './hooks.js';
+// import { required } from 'joi';
 
 const contactSchema = new Schema({
     name: {
@@ -26,7 +27,12 @@ const contactSchema = new Schema({
         enum: contactTypes,
         required: [true, "type of contact must be exist"],
         default: "personal",
-    }
+    },
+    userId: {
+        type: Schema.Types.ObjectId,
+        ref: "user",
+        required: true,
+    },
 }, {versionKey: false, timestamps: true});
 
 contactSchema.post("save", handleSaveError);
