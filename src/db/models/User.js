@@ -4,7 +4,7 @@ import { handleSaveError, setUpdateOptions } from './hooks.js';
 import { emailRegexp } from '../../constants/users.js';
 
 const userSchema = new Schema ({
-   username: {
+   name: {
     type: String,
     required: [true, "Username must be exist"],
    },
@@ -14,7 +14,7 @@ const userSchema = new Schema ({
     match: emailRegexp,
     required: [true, "Email must be exist"], 
 },
-password: {
+   password: {
     type: String,
     required: true,
 }
