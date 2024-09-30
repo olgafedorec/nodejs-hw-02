@@ -129,7 +129,7 @@ export const requestResetToken = async (email) => {
     link: `${env("APP_DOMAIN")}/reset-password?token=${resetToken}`,
   });
 
-  process.env.NODE_TLS_REJECT_UNAUTHORIZED;
+  // process.env.NODE_TLS_REJECT_UNAUTHORIZED;
  
   const result = await sendEmail({
   from: env(SMTP.SMTP_FROM),
