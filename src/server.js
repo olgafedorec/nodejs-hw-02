@@ -8,17 +8,21 @@ import logger from './middlewares/logger.js';
 import contactsRouter from './routers/contacts.js';
 import authRouter from './routers/auth.js';
 
+// require('dotenv').config();
+
 export const startServer = () => {
+ 
   const app = express();
 
   app.use(logger);
   app.use(cors({origin: "*"}));
   app.use(express.json());
   app.use(cookieParser());
+  app.use(express.static("uploads"));
 
-  app.get("/", (req, res) => {
-    res.send("Welcome to the API. Use Postman to interact with the endpoints.");
-  });
+  // app.get("/", (req, res) => {
+  //   res.send("Welcome to the API. Use Postman to interact with the endpoints.");
+  // });
   
   app.use("/auth", authRouter);
   app.use("/contacts", contactsRouter);
