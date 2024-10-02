@@ -131,14 +131,14 @@ export const requestResetToken = async (email) => {
 
   // process.env.NODE_TLS_REJECT_UNAUTHORIZED;
  
-  const result = await sendEmail({
+  const mailOptions = await sendEmail({
   from: env(SMTP.SMTP_FROM),
   to: email,
   subject: "Reset your password",
   html,
  });
 
- if(!result) {
+ if(!mailOptions) {
   throw createHttpError (500, "Failed to send the email, please try again later.");
  }
 };
