@@ -1,12 +1,16 @@
 import { Router } from 'express';
 import ctrlWrapper from '../utils/ctrlWrapper.js';
 import validateBody from '../utils/validateBody.js';
-import { userRegisterSchema, userLoginSchema, sendResetEmailSchema, resetPasswordSchema } from '../validation/users.js';
+import { userRegisterSchema, userLoginSchema, sendResetEmailSchema, resetPasswordSchema, loginWithGoogleOAuthSchema } from '../validation/users.js';
 import * as authControllers from '../controllers/auth.js';
 
 const authRouter = Router();
 
 authRouter.post("/register", validateBody(userRegisterSchema), ctrlWrapper(authControllers.registerController));
+
+authRouter.get("/get-oauth-url", ctrlWrapper(authControllers.getGoogleOAuthUrlController));
+
+authRouter.post("/confirm-google", validateBody(loginWithGoogleOAuthSchema), ctrlWrapper(authControllers.loginWithGoogleOAuthUrlController));
 
 authRouter.post("/login", validateBody(userLoginSchema), ctrlWrapper(authControllers.loginController));
 
