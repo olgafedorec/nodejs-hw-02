@@ -1,4 +1,3 @@
-import * as path from 'node:path';
+export const contactTypes = ["work", "home", "personal"];
 
-export const PATH_DB = path.join(process.cwd(),"src", "db", "db.json");
-
+export const phoneNumberRegexp = /^\+380\d{9}$/;
